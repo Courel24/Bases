@@ -3,10 +3,12 @@ import {
   BaseEntity,
   Column,
   CreateDateColumn,
-  Entity,
+  Entity, ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
+import {User} from "@entities/User.entity";
 
 @ObjectType()
 @Entity()
@@ -37,4 +39,7 @@ export class Appointment extends BaseEntity {
   @CreateDateColumn({ type: 'timestamp' })
   createAt: Date;
 
+  @Field(()=>User,{nullable:false})
+  @ManyToOne(()=>User,(user)=>user.appointments)
+  user: User;
 }

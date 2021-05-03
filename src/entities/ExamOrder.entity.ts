@@ -10,6 +10,8 @@ import {
 } from 'typeorm';
 import {ExamType} from "@entities/ExamTypes.entity";
 import {Glucose} from "@entities/Glucose.entity";
+import {ArterialGases} from "@entities/ArterialGases.entity";
+import {BloodExam} from "@entities/BloodExam.entity";
 
 @ObjectType()
 @Entity()
@@ -47,5 +49,16 @@ export class ExamOrder extends BaseEntity {
 
   @Field(()=>Glucose,{nullable: false})
   @OneToOne(()=>Glucose,(glucose)=>glucose.examOrderId)
+  @JoinTable()
   glucoseResult: Glucose;
+
+  @Field(()=>ArterialGases,{nullable: false})
+  @OneToOne(()=>ArterialGases,(arterialGases)=>arterialGases.examOrderId)
+  @JoinTable()
+  arterialGasesResult: ArterialGases;
+
+  @Field(()=>BloodExam)
+  @OneToOne(()=>BloodExam, (bloodExam)=>bloodExam.examOrderID)
+  @JoinTable()
+  bloodExamResult: BloodExam
 }

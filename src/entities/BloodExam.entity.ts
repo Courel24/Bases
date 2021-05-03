@@ -3,10 +3,11 @@ import {
   BaseEntity,
   Column,
   CreateDateColumn,
-  Entity,
+  Entity, OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import {ExamOrder} from "@entities/ExamOrder.entity";
 
 @ObjectType()
 @Entity()
@@ -32,5 +33,9 @@ export class BloodExam extends BaseEntity {
   @Field()
   @CreateDateColumn({ type: 'timestamp' })
   createAt: Date;
+
+  @Field(()=>ExamOrder)
+  @OneToOne(()=>ExamOrder, (examOrder)=>examOrder.bloodExamResult)
+  examOrderID: ExamOrder;
 
 }

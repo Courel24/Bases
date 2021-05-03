@@ -3,10 +3,12 @@ import {
   BaseEntity,
   Column,
   CreateDateColumn,
-  Entity,
+  Entity, OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
+import {Appointment} from "@entities/Appointment.entity";
 
 @ObjectType()
 @Entity()
@@ -61,4 +63,7 @@ export class User extends BaseEntity {
   @CreateDateColumn({ type: 'timestamp' })
   createAt: Date;
 
+  @Field(()=>[Appointment],{nullable: false})
+  @OneToMany(()=>Appointment,(appointment)=>appointment.user)
+  appointments: Appointment[];
 }
