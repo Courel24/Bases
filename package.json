@@ -19,18 +19,11 @@
         "module-alias": "2.2.2",
         "pg": "8.5.1",
         "ts-node": "9.1.1",
-        "tslint": "6.1.2",
         "typescript": "4.2.3",
         "uniqid": "5.3.0"
     },
     "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "4.16.1",
-        "@typescript-eslint/parser": "4.16.1",
-        "eslint": "7.21.0",
-        "eslint-config-airbnb-base": "14.2.1",
-        "eslint-plugin-import": "2.22.1",
         "nodemon": "2.0.7",
-        "prettier": "2.2.1",
         "reflect-metadata": "0.1.13",
         "ts-jest": "26.5.3",
         "ts-node-dev": "1.1.6",
@@ -38,16 +31,5 @@
         "tslint-config-prettier": "1.18.0",
         "tslint-plugin-prettier": "2.3.0",
         "typescript": "4.2.3"
-    },
-    "_moduleAliases": {
-        "@api": "src/api",
-        "@modules": "src/modules",
-        "@entities": "src/entities",
-        "@config": "src/config",
-        "@utils": "src/utils",
-        "@interfaces": "src/interfaces",
-        "@test": "src/test",
-        "@middlewares": "src/middlewares",
-        "@services": "src/services"
     }
 }
