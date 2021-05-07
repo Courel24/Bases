@@ -1,11 +1,11 @@
 import {getConnection} from "../server";
 
-export const GetCita = async (req: any) => {
+export const ConsultarMuestra = async (req: any) => {
     try{
         const databaseConnection = getConnection();
-        const {UserCC, llave2} = req.query;
-        console.log(llave2)
-        const databaseResponse  = await databaseConnection.query(`SELECT * from paciente WHERE cc = CAST(${UserCC} as VARCHAR)`);
+        const {id} = req.query;
+        const databaseResponse  = await databaseConnection.query(`SELECT * from muestra WHERE id = CAST(${id} as VARCHAR)`);
+        console.log(databaseResponse);
         return {
             data: databaseResponse.rows
         }

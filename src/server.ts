@@ -40,6 +40,20 @@ export const runServer = async () => {
       }
   );
 
+  server.get('/consultar-muestra',
+      async (req, res) => {
+        const response = await GetUser(req);
+        return res.send(response);
+      }
+  );
+
+  server.get('/consultar-paciente',
+      async (req, res) => {
+        const response = await GetUser(req);
+        return res.send(response);
+      }
+  );
+
   server.get('/get-cita',
       async (req, res) => {
         const response = await GetCita(req);
