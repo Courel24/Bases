@@ -1,6 +1,6 @@
 import {getConnection} from "../server";
 
-export const GetResultadosPaciente = async (req: any) => {
+export const GetResultados = async (req: any) => {
     try{
         const databaseConnection = getConnection();
         const {idExamen, ccPaciente} = req.query;
