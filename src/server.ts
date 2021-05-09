@@ -14,6 +14,13 @@ import {CrearPaciente} from "./EndPoints/crearPaciente";
 import {GetTipoExamen} from "./EndPoints/getTipoExamen";
 import {GetTipoExamenBox} from "./EndPoints/getTipoExamenBox";
 import {CrearCita} from "./EndPoints/crearCita";
+import {GetHistorial} from "./EndPoints/getHistorial";
+import {GetExamenesDia} from "./EndPoints/getExamenesDia";
+import {GetExamenesTipo} from "./EndPoints/getExamenesTipo";
+import {GetPacientesAtendidos} from "./EndPoints/getPacientesAtendidos";
+import {GetCantidadPaciente} from "./EndPoints/getCantidadPaciente";
+import {GetGanaciaDia} from "./EndPoints/getGanaciaDia";
+import {GetGananciaExamen} from "./EndPoints/getGananciaExamen";
 
 let DatabaseConnection: undefined | Pool = undefined
 
@@ -134,8 +141,58 @@ export const runServer = async () => {
         }
     );
 
+    server.get('/get-historial',
+        async (req, res) => {
+            const response = await GetHistorial(req);
+            return res.send(response);
+        }
+    );
 
-  httpServer.listen(3500, () => {
+    server.get('/get-examenes-dia',
+        async (req, res) => {
+            const response = await GetExamenesDia(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-examenes-tipo',
+        async (req, res) => {
+            const response = await GetExamenesTipo(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-pacientes-atendidos',
+        async (req, res) => {
+            const response = await GetPacientesAtendidos(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-cantidad-paciente',
+        async (req, res) => {
+            const response = await GetCantidadPaciente(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-ganancia-dia',
+        async (req, res) => {
+            const response = await GetGanaciaDia(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-ganancia-examen',
+        async (req, res) => {
+            const response = await GetGananciaExamen(req);
+            return res.send(response);
+        }
+    );
+
+
+
+    httpServer.listen(3500, () => {
     console.log(`Server Started at ${3500}`);
   });
 };
