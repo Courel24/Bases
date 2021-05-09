@@ -14,6 +14,13 @@ import {CrearPaciente} from "./EndPoints/crearPaciente";
 import {GetTipoExamen} from "./EndPoints/getTipoExamen";
 import {GetTipoExamenBox} from "./EndPoints/getTipoExamenBox";
 import {CrearCita} from "./EndPoints/crearCita";
+import {GetHistorial} from "./EndPoints/getHistorial";
+import {GetExamenesDia} from "./EndPoints/getExamenesDia";
+import {GetExamenesTipo} from "./EndPoints/getExamenesTipo";
+import {GetPacientesAtendidos} from "./EndPoints/getPacientesAtendidos";
+import {GetCantidadPaciente} from "./EndPoints/getCantidadPaciente";
+import {GetGanaciaDia} from "./EndPoints/getGanaciaDia";
+import {GetGananciaExamen} from "./EndPoints/getGananciaExamen";
 import cors from "cors"
 
 let DatabaseConnection: undefined | Pool = undefined
@@ -26,9 +33,9 @@ export const getConnection = (): Pool => {
 
   DatabaseConnection = new Pool({
     user: 'postgres',
-    host: '192.168.1.114',
+    host: 'localhost',
     database: 'lab',
-    password: 'proyecto1',
+    password: '110411',
     port: 5432,
   })
 
@@ -40,7 +47,6 @@ export const runServer = async () => {
 
   const httpServer = createServer(server);
     server.use(cors());
-
     server.get('/',
       (_req, res) => res.send('Servidor Bases de datos')
   );
@@ -132,6 +138,55 @@ export const runServer = async () => {
     server.get('/crear-cita',
         async (req, res) => {
             const response = await CrearCita(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-historial',
+        async (req, res) => {
+            const response = await GetHistorial(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-examenes-dia',
+        async (req, res) => {
+            const response = await GetExamenesDia(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-examenes-tipo',
+        async (req, res) => {
+            const response = await GetExamenesTipo(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-pacientes-atendidos',
+        async (req, res) => {
+            const response = await GetPacientesAtendidos(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-cantidad-paciente',
+        async (req, res) => {
+            const response = await GetCantidadPaciente(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-ganancia-dia',
+        async (req, res) => {
+            const response = await GetGanaciaDia(req);
+            return res.send(response);
+        }
+    );
+
+    server.get('/get-ganancia-examen',
+        async (req, res) => {
+            const response = await GetGananciaExamen(req);
             return res.send(response);
         }
     );
