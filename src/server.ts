@@ -1,6 +1,19 @@
 import express from 'express';
 import { createServer } from 'http';
 import {Pool} from "pg";
+import {InicioPaciente} from "./EndPoints/inicioPaciente";
+import {InicioPersonal} from "./EndPoints/inicioPersonal";
+import {GetPaciente} from "./EndPoints/getPaciente";
+import {EditarClave} from "./EndPoints/editarClave";
+import {EditarPaciente} from "./EndPoints/editarPaciente";
+import {GetExamenesRealizados} from "./EndPoints/getExamenesRealizados";
+import {GetCitasPacientes} from "./EndPoints/getCitasPacientes";
+import {GetPacienteCompleto} from "./EndPoints/getPacienteCompleto";
+import {EditarPacienteCompleto} from "./EndPoints/editarPacienteCompleto";
+import {CrearPaciente} from "./EndPoints/crearPaciente";
+import {GetTipoExamen} from "./EndPoints/getTipoExamen";
+import {GetTipoExamenBox} from "./EndPoints/getTipoExamenBox";
+import {CrearCita} from "./EndPoints/crearCita";
 import { GetExamenesGenerales } from './EndPoints/examenesGenerales';
 import { GetExamenByName } from './EndPoints/getExamenByName';
 import { GetExamenSinResultado } from './EndPoints/getExamenSinResultado';
@@ -80,6 +93,100 @@ export const runServer = async () => {
         return res.send(response);
       }
   );*/
+  server.get('/inicio-paciente',
+    async (req, res) => {
+      const response = await InicioPaciente(req);
+      return res.send(response);
+    }
+  );
+  server.get('/inicio-personal',
+    async (req, res) => {
+      const response = await InicioPersonal(req);
+      return res.send(response);
+    }
+  );
+  server.get('/get-paciente',
+    async (req, res) => {
+      const response = await GetPaciente(req);
+      return res.send(response);
+    }
+  );
+
+  server.get('/editar-clave',
+    async (req, res) => {
+      const response = await EditarClave(req);
+      return res.send(response);
+    }
+  );
+
+  server.get('/editar-paciente',
+    async (req, res) => {
+      const response = await EditarPaciente(req);
+      return res.send(response);
+    }
+  );
+
+  server.get('/get-examenes-realizados',
+    async (req, res) => {
+      const response = await GetExamenesRealizados(req);
+      return res.send(response);
+    }
+  );
+  server.get('/get-citas-pacientes',
+    async (req, res) => {
+      const response = await GetCitasPacientes(req);
+      return res.send(response);
+    }
+  );
+  server.get('/crear-paciente',
+    async (req, res) => {
+      const response = await CrearPaciente(req);
+      return res.send(response);
+    }
+  );
+
+  server.get('/get-paciente-completo',
+    async (req, res) => {
+      const response = await GetPacienteCompleto(req);
+      return res.send(response);
+    }
+  );
+
+  server.get('/editar-paciente-completo',
+    async (req, res) => {
+      const response = await EditarPacienteCompleto(req);
+      return res.send(response);
+    }
+  );
+  server.get('/get-tipo-examen',
+    async (req, res) => {
+      const response = await GetTipoExamen(req);
+      return res.send(response);
+    }
+  );
+
+  server.get('/get-tipo-examen-box',
+    async (req, res) => {
+      const response = await GetTipoExamenBox(req);
+      return res.send(response);
+    }
+  );
+
+  server.get('/crear-cita',
+    async (req, res) => {
+      const response = await CrearCita(req);
+      return res.send(response);
+    }
+  );
+
+
+  server.get('/get-historial',
+    async (req, res) => {
+      const response = await GetHistorial(req);
+      return res.send(response);
+    }
+  );
+
 
     server.get('/get-historial',
         async (req, res) => {
