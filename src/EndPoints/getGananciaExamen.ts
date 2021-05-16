@@ -10,6 +10,8 @@ export const GetGananciaExamen = async (_req: any) => {
             data: databaseResponse.rows
         }
     }catch (err){
+        console.log(err)
+
         return {
             error: "Error al obtener la ganancia por examen"
         }
