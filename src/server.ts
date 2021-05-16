@@ -30,6 +30,7 @@ import {GetGananciaExamen} from "./EndPoints/getGananciaExamen";
 import {GetExamenesLab} from "./EndPoints/getExamenesLab";
 import {GetExamenDate} from "./EndPoints/getExamenDate";
 import cors from "cors"
+import { UpdateResultExam } from './EndPoints/updateResultExam';
 
 let DatabaseConnection: undefined | Pool = undefined
 
@@ -155,6 +156,12 @@ export const runServer = async () => {
   server.get('/editar-paciente-completo',
     async (req, res) => {
       const response = await EditarPacienteCompleto(req);
+      return res.send(response);
+    }
+  );
+  server.get('/editar-resultado-examen',
+    async (req, res) => {
+      const response = await UpdateResultExam(req);
       return res.send(response);
     }
   );
